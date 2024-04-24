@@ -1,3 +1,4 @@
+url = "http://localhost:5027/api/Musics",
 Vue.createApp({
     data() {
         return {
@@ -7,11 +8,14 @@ Vue.createApp({
     },
     
     methods: {
-
+        
         async getMusic() {
-            const response = await fetch("https://api.deezer.com/chart/0/tracks")
-            const data = await response.json()
-            this.musics = data.data
+            try {
+                const res = await axios.get(url)
+                this.musics = await res.data
+            } catch (e) {
+                this.error = e
+            }
         }
     }
 }).mount("#app")
