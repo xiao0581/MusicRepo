@@ -29,7 +29,14 @@
                 <td>{{music.year}}</td>
                 <td>{{music.path}}</td>
         </table>
-       
+        <input type="text" v-model="music.title" placeholder="Title">
+        <input type="text" v-model="music.artist" placeholder="Artist">
+        <input type="text" v-model="music.album" placeholder="Album">
+        <input type="text" v-model="music.genre" placeholder="Genre">
+        <input type="text" v-model.number="music.year" placeholder="Year">
+        <input type="text" v-model="music.path" placeholder="Path">
+       <button @click="postMusic()">Add</button>
+
 
     </div>
     <script src="js/index.js"></script>

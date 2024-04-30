@@ -3,10 +3,21 @@ Vue.createApp({
     data() {
         return {
             musics: [],
-            music: null
+            music: {
+                title: "",
+                artist: "",
+                genre: "",
+                year: "",
+                album: "",
+                path: "",
+
+
+            },
         }
     },
-    
+     async created() { // life cycle method. Called when browser reloads page
+        this.getMusic()
+    },
     methods: {
         
         async getMusic() {
@@ -16,7 +27,16 @@ Vue.createApp({
             } catch (e) {
                 this.error = e
             }
-        }
+        },
+        async postMusic() {
+            try {
+                const res = await axios.post(url, this.music)
+                this.musics = await res.data
+                this.getMusic()
+            } catch (e) {
+                this.error = e
+            }
+        }   
     }
 }).mount("#app")
     
