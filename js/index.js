@@ -1,4 +1,4 @@
-url = "http://localhost:5027/api/Musics",
+url = "https://musicserver20240430122510.azurewebsites.net/api/musics",
 Vue.createApp({
     data() {
         return {
