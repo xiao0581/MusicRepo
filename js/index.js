@@ -13,6 +13,7 @@ Vue.createApp({
 
 
             },
+            sort: "",
         }
     },
      async created() { // life cycle method. Called when browser reloads page
@@ -36,7 +37,15 @@ Vue.createApp({
             } catch (e) {
                 this.error = e
             }
-        }   
+        },
+        async sortMusic() {
+            try {
+                const res = await axios.get(url + "?sortBy=" + this.sort)
+                this.musics = await res.data
+            } catch (e) {
+                this.error = e
+            }
+        }
     }
 }).mount("#app")
     
